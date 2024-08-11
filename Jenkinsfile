@@ -1,11 +1,10 @@
 pipeline {
     agent any
     environment {
-      PATH = "$PATH:/usr/share/maven/bin"
+        PATH = "$PATH:/usr/bin/mvn"
     }
     
     stages {
-
         stage('CLEAN WORKSPACE') {
             steps {
                 cleanWs()
@@ -13,8 +12,12 @@ pipeline {
         }
         stage('CODE CHECKOUT') {
             steps {
-                git branch:'main' , url:'https://github.com/Aniket10720/devops_real_time_project_1.git'
-                
+                git branch:'main', url:'https://github.com/Aniket10720/devops_real_time_project_1.git'
+            }
+        }
+        stage('LIST WORKSPACE') {
+            steps {
+                sh 'ls -al'
             }
         }
         stage('MODIFIED IMAGE TAG') {
@@ -33,7 +36,7 @@ pipeline {
         } 
         stage('SONAR SCANNER') {
             environment {
-            sonar_token = credentials('SONAR_TOKEN')
+                sonar_token = credentials('SONAR_TOKEN')
             }
             steps {
                 sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
@@ -49,8 +52,8 @@ pipeline {
         }
         stage('PUSH IMAGE ON DOCKERHUB') {
             environment {
-            dockerhub_user = credentials('DOCKERHUB_USER')            
-            dockerhub_pass = credentials('DOCKERHUB_PASS')
+                dockerhub_user = credentials('DOCKERHUB_USER')            
+                dockerhub_pass = credentials('DOCKERHUB_PASS')
             }    
             steps {
                 sh 'ansible-playbook playbooks/push_dockerhub.yml \
