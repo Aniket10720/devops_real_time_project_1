@@ -90,7 +90,8 @@
         <artifactId>sonar-maven-plugin</artifactId>
         <version>4.0.0.4121</version>
         <configuration>
-          <sonar.login>sqa_f07677f79c39ec1072cca8a9145f0897bab5b9e5</sonar.login>
+          <sonar.login>sqa_f07677f79c39ec1072cca8a9145f0897bab5b9e5</sonar.login> 
+          <sonar.host.url>http://43.204.22.48:9000/</sonar.host.url> 
         </configuration>
       </plugin>
 
