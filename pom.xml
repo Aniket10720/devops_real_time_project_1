@@ -227,7 +227,6 @@
   </prerequisites>
 
 </project>
-pendency>
 
       <dependency>
         <groupId>org.hamcrest</groupId>
