@@ -85,7 +85,14 @@
           <sonar.login>sqa_f07677f79c39ec1072cca8a9145f0897bab5b9e5</sonar.login>
         </configuration>
       </plugin>
-    </plugins>
+    </plugins> 
+
+             <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-war-plugin</artifactId>
+      <version>3.3.2</version>
+    </plugin>
+  </plugins>
 
     <pluginManagement>
       <plugins>
